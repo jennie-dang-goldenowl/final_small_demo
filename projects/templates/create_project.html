@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        JenGyy - {% block title %}Create new project{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'assets\css\style.css' %}" type="text/css">
+    <script src="https://kit.fontawesome.com/10053f200c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'static/lib/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1><a href="/projects/">JenGyy</a></h1>
+            <div class="nav">
+                <ul>
+                    <li><a href="/projects/">Project</a></li>
+                    <li><a href="showDev.html">Developer</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><i class="fa-solid fa-user"></i></li>
+                </ul>
+            </div>
+        </div>       
+        
+        <div id="content">
+            <div class="table-title">
+                <h3>Data Table</h3>
+                <h3>-</h3> 
+            </div>
+            <div class="title">
+                <h1>Create Project</h1>
+            </div>
+            <div class="fill">
+                    <form action="add-project/" method ='post' class="was-validated">
+                    {% csrf_token %}
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="namepro" placeholder="Please enter name project" name="name" required>
+
+                        <div class="left-column">
+                            <label for="startDate" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="right-column">
+                            <label for="endDate" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="endDate" name="endDate" required>
+                        </div>
+                        <label class="form-label" for="dev">Developer</label>
+                        <select name="dev" class="form-control" placeholder="Please choose dev">
+                            <option value="" disabled selected hidden>Choose developer</option>
+                            <option value="Ryy">Ryy</option>
+                            <option value="Jen">Jen</option>
+                            <option value="NhoRyy">Nhory</option>
+                            <option value="Boryy">Boryy</option>
+                        </select>
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" name="description" cols="30" rows="10" placeholder="Please enter description"></textarea>
+                        <div>
+                            <input type="submit" value="Create">
+                            <button class="create">Cancel</button>
+                        </div>
+                    </form>
+            </div>
+            <div class="table-title">
+                <h4> </h4>
+            </div>
+            {% block script %}
+                <script type="text/javascript" src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script> 
+                <script type="text/javascript" src="{% static 'assets/js/jquery.validate.js' %}"></script> 
+                <script src="https://kit.fontawesome.com/10053f200c.js" crossorigin="anonymous"></script>
+                <script type="text/javascript" src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script> 
+                <script src="{% static 'assets/js/script.js' %}"></script> 
+                <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>              
+                <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script> 
+            {% endblock script %}
+</body>
+</html>
